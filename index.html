@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Spotify - Web Player: Music for everyone</title>
+  <link rel="icon" type="image/png" href="logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="spotify-app">
+    <aside class="spotify-sidebar">
+      <div class="sidebar-box">
+        <div class="brand" id="brand-home">
+          <img src="logo.png" alt="Spotify Logo" />
+          <span>Spotify</span>
+        </div>
+        <ul class="nav-list">
+          <li class="nav-item active" id="nav-home">
+            <i class="bi bi-house-door-fill"></i>
+            <span>Home</span>
+          </li>
+          <li class="nav-item" id="nav-search">
+            <i class="bi bi-search"></i>
+            <span>Search</span>
+          </li>
+        </ul>
+      </div>
+      <div class="sidebar-box library-box">
+        <div class="library-header">
+          <button class="library-btn" id="library-btn">
+            <i class="bi bi-collection-play-fill"></i>
+            <span>Your Library</span>
+          </button>
+          <div class="library-actions">
+            <button class="icon-btn" title="Create playlist or folder" id="btn-create-playlist">
+              <i class="bi bi-plus-lg"></i>
+            </button>
+            <button class="icon-btn" title="Show more" id="btn-more-options">
+              <i class="bi bi-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+        <div class="filter-chips">
+          <button class="chip active" data-filter="all">All</button>
+          <button class="chip" data-filter="playlists">Playlists</button>
+          <button class="chip" data-filter="artists">Artists</button>
+        </div>
+        <ul class="library-list" id="sidebar-playlist-list">
+          <li class="playlist-row" data-tab="liked" id="sidebar-liked-songs">
+            <div class="playlist-thumb gradient-heart">
+              <i class="bi bi-heart-fill"></i>
+            </div>
+            <div class="playlist-info">
+              <span class="playlist-title">Liked Songs</span>
+              <span class="playlist-meta" id="liked-count-meta">Playlist • 0 songs</span>
+            </div>
+          </li>
+          <li class="playlist-row active" data-tab="all" id="sidebar-all-songs">
+            <img src="img/1.jpg" alt="Bollywood Vibes" class="playlist-thumb" />
+            <div class="playlist-info">
+              <span class="playlist-title">Top Bollywood Hits</span>
+              <span class="playlist-meta">Playlist • 15 tracks</span>
+            </div>
+          </li>
+          <li class="playlist-row" data-tab="recent" id="sidebar-recent-songs">
+            <img src="img/6.jpg" alt="Starboy Radio" class="playlist-thumb" />
+            <div class="playlist-info">
+              <span class="playlist-title">Pop & Indie Rewind</span>
+              <span class="playlist-meta">Playlist • Daily Mix</span>
+            </div>
+          </li>
+          <li class="playlist-row" data-tab="romantic" id="sidebar-romantic-songs">
+            <img src="img/7.jpg" alt="Soulful Acoustic" class="playlist-thumb" />
+            <div class="playlist-info">
+              <span class="playlist-title">Soulful Melodies</span>
+              <span class="playlist-meta">Playlist • Chill vibes</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </aside>
+    <main class="spotify-main" id="main-view">
+      <header class="main-header">
+        <div class="header-left">
+          <div class="history-nav">
+            <button class="nav-arrow" id="nav-history-back" title="Go back">
+              <i class="bi bi-chevron-left"></i>
+            </button>
+            <button class="nav-arrow" id="nav-history-forward" title="Go forward">
+              <i class="bi bi-chevron-right"></i>
+            </button>
+          </div>
+          <div class="search-wrapper">
+            <i class="bi bi-search search-icon"></i>
+            <input type="text" class="search-input" id="search-input" placeholder="What do you want to play?" />
+            <button class="search-clear" id="search-clear" title="Clear search">
+              <i class="bi bi-x-lg"></i>
+            </button>
+          </div>
+        </div>
+        <div class="header-right">
+          <button class="premium-pill" id="premium-btn">Explore Premium</button>
+          <div class="user-badge" id="user-profile-badge" title="User Profile">
+            <div class="user-avatar">
+              <img src="logo.png" alt="User Avatar" />
+            </div>
+            <span class="user-name">Guest</span>
+          </div>
+        </div>
+      </header>
+      <div class="main-content">
+        <section class="greeting-section">
+          <h1 class="greeting-title" id="greeting-text">Good evening</h1>
+          <div class="quick-grid" id="quick-grid"></div>
+        </section>
+        <section class="hero-banner" id="hero-banner">
+          <div class="hero-overlay"></div>
+          <div class="hero-content">
+            <span class="hero-tag">Featured Song</span>
+            <h2 class="hero-title" id="hero-title">Jab We Met - Tum Se Hi</h2>
+            <p class="hero-description" id="hero-desc">
+              "Tum Se Hi din hota hai Surmayi shaam aati hai, Tum Se Hi Tum Se Hi har ghadi saans aati hai..."
+            </p>
+            <div class="hero-buttons">
+              <button class="hero-play-btn" id="hero-play-btn">
+                <i class="bi bi-play-fill"></i> Play Now
+              </button>
+              <button class="hero-follow-btn" id="hero-follow-btn">
+                <i class="bi bi-heart"></i> Save to Favorites
+              </button>
+            </div>
+          </div>
+        </section>
+        <section class="content-section" id="popular-songs-section">
+          <div class="section-header">
+            <h2 class="section-title">Popular Songs</h2>
+            <div class="carousel-controls">
+              <button class="scroll-btn" id="pop-left" title="Scroll left">
+                <i class="bi bi-chevron-left"></i>
+              </button>
+              <button class="scroll-btn" id="pop-right" title="Scroll right">
+                <i class="bi bi-chevron-right"></i>
+              </button>
+            </div>
+          </div>
+          <div class="cards-carousel" id="popular-cards-carousel"></div>
+        </section>
+        <section class="content-section">
+          <div class="section-header">
+            <h2 class="section-title">Popular Artists</h2>
+            <div class="carousel-controls">
+              <button class="scroll-btn" id="artist-left" title="Scroll left">
+                <i class="bi bi-chevron-left"></i>
+              </button>
+              <button class="scroll-btn" id="artist-right" title="Scroll right">
+                <i class="bi bi-chevron-right"></i>
+              </button>
+            </div>
+          </div>
+          <div class="artists-carousel" id="artists-carousel"></div>
+        </section>
+        <section class="content-section" id="tracklist-section">
+          <div class="section-header">
+            <h2 class="section-title" id="tracklist-title">All Songs</h2>
+          </div>
+          <div class="tracklist-container">
+            <div class="tracklist-header">
+              <div>#</div>
+              <div>Title</div>
+              <div class="track-album">Album / Artist</div>
+              <div>Favorite</div>
+              <div class="track-duration"><i class="bi bi-clock"></i></div>
+            </div>
+            <div class="track-rows" id="tracklist-rows"></div>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+  <footer class="spotify-player">
+    <div class="player-left">
+      <div class="player-thumb-wrapper">
+        <img src="img/1.jpg" alt="Current Playing Track" id="player-thumb" />
+      </div>
+      <div class="player-track-info">
+        <span class="player-title" id="player-title">Tum Se Hi</span>
+        <span class="player-artist" id="player-artist">Mohit Chauhan</span>
+      </div>
+      <button class="player-heart" id="player-heart" title="Save to Your Library">
+        <i class="bi bi-heart" id="player-heart-icon"></i>
+      </button>
+      <div class="wave-visualizer" id="wave-visualizer">
+        <div class="wave-bar"></div>
+        <div class="wave-bar"></div>
+        <div class="wave-bar"></div>
+        <div class="wave-bar"></div>
+      </div>
+    </div>
+    <div class="player-center">
+      <div class="player-controls">
+        <button class="control-btn" id="shuffle" title="Enable shuffle">
+          <i class="bi bi-shuffle"></i>
+        </button>
+        <button class="control-btn" id="back" title="Previous">
+          <i class="bi bi-skip-start-fill"></i>
+        </button>
+        <button class="play-pause-btn" id="masterPlay" title="Play">
+          <i class="bi bi-play-fill" id="masterPlayIcon"></i>
+        </button>
+        <button class="control-btn" id="next" title="Next">
+          <i class="bi bi-skip-end-fill"></i>
+        </button>
+        <button class="control-btn" id="repeat" title="Enable repeat">
+          <i class="bi bi-repeat"></i>
+        </button>
+      </div>
+      <div class="playback-bar">
+        <span class="time-stamp" id="currentStart">0:00</span>
+        <div class="progress-wrapper" id="progress-wrapper">
+          <div class="progress-track">
+            <div class="progress-fill" id="progress-fill"></div>
+          </div>
+          <div class="progress-thumb" id="progress-thumb"></div>
+          <input type="range" class="progress-range" id="seek" min="0" value="0" max="100" step="0.1"
+            aria-label="Seek track position" />
+        </div>
+        <span class="time-stamp end" id="currentEnd">0:00</span>
+      </div>
+    </div>
+    <div class="player-right">
+      <button class="util-btn" title="Lyrics" id="lyrics-btn">
+        <i class="bi bi-mic"></i>
+      </button>
+      <button class="util-btn" title="Queue" id="queue-btn">
+        <i class="bi bi-view-list"></i>
+      </button>
+      <button class="util-btn" title="Connect to a device" id="device-btn">
+        <i class="bi bi-speaker"></i>
+      </button>
+      <div class="volume-wrapper">
+        <button class="vol-btn" id="vol_icon" title="Mute/Unmute">
+          <i class="bi bi-volume-up-fill" id="vol_icon_glyph"></i>
+        </button>
+        <div class="vol-slider-wrapper" id="vol-slider-wrapper">
+          <div class="vol-track">
+            <div class="vol-fill" id="vol-fill"></div>
+          </div>
+          <div class="vol-thumb" id="vol-thumb"></div>
+          <input type="range" class="vol-range" id="vol" min="0" value="50" max="100" aria-label="Volume level" />
+        </div>
+      </div>
+      <button class="util-btn" title="Full screen" id="fullscreen-btn">
+        <i class="bi bi-arrows-fullscreen"></i>
+      </button>
+    </div>
+  </footer>
+  <script src="app.js"></script>
+</body>
+
+</html>
