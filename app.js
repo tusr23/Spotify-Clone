@@ -240,6 +240,26 @@ const artistRight = document.getElementById("artist-right");
 const fullscreenBtn = document.getElementById("fullscreen-btn");
 const mainView = document.getElementById("main-view");
 
+const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+const sidebarCloseBtn = document.getElementById("sidebar-close-btn");
+const sidebarBackdrop = document.getElementById("sidebar-backdrop");
+const spotifySidebar = document.getElementById("spotify-sidebar");
+const mobileNavHome = document.getElementById("mobile-nav-home");
+const mobileNavSearch = document.getElementById("mobile-nav-search");
+const mobileNavLibrary = document.getElementById("mobile-nav-library");
+
+function openMobileSidebar() {
+  if (spotifySidebar) spotifySidebar.classList.add("mobile-open");
+  if (sidebarBackdrop) sidebarBackdrop.classList.add("active");
+  document.querySelectorAll(".mobile-nav-item").forEach((n) => n.classList.remove("active"));
+  if (mobileNavLibrary) mobileNavLibrary.classList.add("active");
+}
+
+function closeMobileSidebar() {
+  if (spotifySidebar) spotifySidebar.classList.remove("mobile-open");
+  if (sidebarBackdrop) sidebarBackdrop.classList.remove("active");
+}
+
 function formatTime(seconds) {
   if (isNaN(seconds) || seconds < 0) return "0:00";
   const mins = Math.floor(seconds / 60);
@@ -840,6 +860,49 @@ fullscreenBtn.addEventListener("click", () => {
       console.warn("Fullscreen exit error:", err);
     });
   }
+});
+
+if (mobileMenuBtn) {
+  mobileMenuBtn.addEventListener("click", openMobileSidebar);
+}
+if (sidebarCloseBtn) {
+  sidebarCloseBtn.addEventListener("click", closeMobileSidebar);
+}
+if (sidebarBackdrop) {
+  sidebarBackdrop.addEventListener("click", closeMobileSidebar);
+}
+if (mobileNavHome) {
+  mobileNavHome.addEventListener("click", () => {
+    closeMobileSidebar();
+    document.querySelectorAll(".mobile-nav-item").forEach((n) => n.classList.remove("active"));
+    mobileNavHome.classList.add("active");
+    navHome.click();
+  });
+}
+if (mobileNavSearch) {
+  mobileNavSearch.addEventListener("click", () => {
+    closeMobileSidebar();
+    document.querySelectorAll(".mobile-nav-item").forEach((n) => n.classList.remove("active"));
+    mobileNavSearch.classList.add("active");
+    navSearch.click();
+  });
+}
+if (mobileNavLibrary) {
+  mobileNavLibrary.addEventListener("click", () => {
+    if (spotifySidebar && spotifySidebar.classList.contains("mobile-open")) {
+      closeMobileSidebar();
+      document.querySelectorAll(".mobile-nav-item").forEach((n) => n.classList.remove("active"));
+      mobileNavHome.classList.add("active");
+    } else {
+      openMobileSidebar();
+    }
+  });
+}
+
+document.querySelectorAll(".playlist-row").forEach((row) => {
+  row.addEventListener("click", () => {
+    closeMobileSidebar();
+  });
 });
 
 function init() {

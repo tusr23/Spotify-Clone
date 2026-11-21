@@ -15,12 +15,18 @@
 </head>
 
 <body>
+  <div class="sidebar-backdrop" id="sidebar-backdrop"></div>
   <div class="spotify-app">
-    <aside class="spotify-sidebar">
+    <aside class="spotify-sidebar" id="spotify-sidebar">
       <div class="sidebar-box">
-        <div class="brand" id="brand-home">
-          <img src="logo.png" alt="Spotify Logo" />
-          <span>Spotify</span>
+        <div class="brand-wrapper">
+          <div class="brand" id="brand-home">
+            <img src="logo.png" alt="Spotify Logo" />
+            <span>Spotify</span>
+          </div>
+          <button class="sidebar-close-btn" id="sidebar-close-btn" title="Close Library">
+            <i class="bi bi-x-lg"></i>
+          </button>
         </div>
         <ul class="nav-list">
           <li class="nav-item active" id="nav-home">
@@ -90,6 +96,9 @@
     <main class="spotify-main" id="main-view">
       <header class="main-header">
         <div class="header-left">
+          <button class="mobile-menu-btn" id="mobile-menu-btn" title="Open Library">
+            <i class="bi bi-list"></i>
+          </button>
           <div class="history-nav">
             <button class="nav-arrow" id="nav-history-back" title="Go back">
               <i class="bi bi-chevron-left"></i>
@@ -262,6 +271,20 @@
       </button>
     </div>
   </footer>
+  <nav class="mobile-nav" id="mobile-nav">
+    <button class="mobile-nav-item active" id="mobile-nav-home">
+      <i class="bi bi-house-door-fill"></i>
+      <span>Home</span>
+    </button>
+    <button class="mobile-nav-item" id="mobile-nav-search">
+      <i class="bi bi-search"></i>
+      <span>Search</span>
+    </button>
+    <button class="mobile-nav-item" id="mobile-nav-library">
+      <i class="bi bi-collection-play-fill"></i>
+      <span>Your Library</span>
+    </button>
+  </nav>
   <script src="app.js"></script>
 </body>
 
